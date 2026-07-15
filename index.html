@@ -332,6 +332,101 @@
     font-size: 0.85rem;
     margin: 18px 0 0 0;
   }
+  .cert-group + .cert-group {
+    margin-top: 38px;
+    padding-top: 30px;
+    border-top: 1px solid var(--rule);
+  }
+  .cert-group-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .cert-status {
+    display: inline-block;
+    width: fit-content;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .cert-status.completed {
+    color: #2d6a4f;
+    border-color: rgba(45,106,79,0.35);
+    background: rgba(45,106,79,0.06);
+  }
+
+
+  /* Certification groups and credential media */
+  .cert-card.quantum-card {
+    padding: 0;
+    overflow: hidden;
+  }
+  .cert-badge {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid var(--rule);
+  }
+  .cert-card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .cert-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      linear-gradient(135deg, rgba(124,31,42,0.04), rgba(28,36,48,0.02));
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .cert-card.pending {
+    opacity: 0.82;
+  }
+  .cert-components {
+    margin: 12px 0 0 0;
+    padding-left: 18px;
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+  }
+  .cert-components li {
+    margin-bottom: 14px;
+  }
+  .cert-components li:last-child {
+    margin-bottom: 0;
+  }
+  .cert-components strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .component-link {
+    display: block;
+    margin-top: 3px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.76rem;
+  }
+  .emt-note {
+    margin-top: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.76rem;
+    color: var(--ink-soft);
+  }
 
   /* Resume */
   #resume .resume-box {
@@ -533,7 +628,7 @@
       </div>
       <div class="edu-date">Class of 2026</div>
       <div class="edu-details">
-        Conducted independent research in quantum error mitigation with mentorship from IBM Research. Coursework included advanced calculus, calculus-based mechanics and electromagnetism, chemistry, computer science, and statistical analysis.
+        Conducted independent research in quantum error mitigation with mentorship from IBM Research. Coursework included calculus III, calculus-based mechanics and electromagnetism, chemistry, computer science, and statistical analysis.
       </div>
     </div>
 
@@ -555,7 +650,7 @@
       </div>
       <div class="edu-date">Summer 2025</div>
       <div class="edu-details">
-        Completed an intensive introduction to molecular engineering spanning targeted molecular design, energy, density functional theory, and quantum engineering, including laboratory work and HPC simulations.
+        Completed an intensive introduction to molecular engineering spanning targeted materials design, energy, density functional theory, and quantum engineering, including laboratory work and HPC molecule simulation.
       </div>
     </div>
 
@@ -582,13 +677,13 @@
     <div class="exp-entry">
       <h3>Certified Volunteer Firefighter</h3>
       <span class="exp-meta">Chappaqua Fire Department</span>
-      <p>Responding to fire, rescue, alarm, and public-service incidents as an active member of the department for over 2.5 years. </p>
+      <p>Responds to fire, rescue, alarm, and public-service incidents as an active member of the department.</p>
     </div>
 
     <div class="exp-entry">
       <h3>EMT</h3>
       <span class="exp-meta">Chappaqua EMS (since Jan 2026) · Pleasantville Emergency Services (since Dec 2025)</span>
-      <p>Providing high-quality prehospital 911 care across two emergency medical services organizations.</p>
+      <p>Provides volunteer prehospital care and operational support across two community emergency medical services organizations.</p>
     </div>
 
     <div class="exp-entry">
@@ -598,42 +693,122 @@
     </div>
 
     <div class="exp-entry">
-      <h3>Design Lead</h3>
-      <span class="exp-meta">FIRST Robotics Competition · Founding Member</span>
-      <p>Founding member and design lead for the team's robotics platform.</p>
+      <h3>Private Tutor</h3>
+      <span class="exp-meta">High School Students</span>
+      <p>Offer one-on-one tutoring in Math, Chemistry, and Physics, targeting specific student learning goals.</p>
     </div>
+
+
   </section>
+
 
 
   <section id="certifications">
-    <span class="eyebrow">Credentials</span>
+    <span class="eyebrow">Credentials &amp; Technical Learning</span>
     <h2 class="section-title">Certifications</h2>
 
-    <div class="cert-grid">
-      <article class="cert-card">
-        <h3>Emergency Medical Technician</h3>
-        <div class="cert-issuer">New York State</div>
-        <p>Certification for prehospital emergency assessment, stabilization, and basic life support care.</p>
-        <a class="cert-link" href="certificates/nys-emt.pdf" target="_blank" rel="noopener">View credential →</a>
-      </article>
+    <div class="cert-group">
+      <h3 class="cert-group-title">Quantum Computing</h3>
 
-      <article class="cert-card">
-        <h3>Firefighter I</h3>
-        <div class="cert-issuer">New York State Office of Fire Prevention and Control</div>
-        <p>Foundational structural firefighting training covering fire behavior, suppression, rescue, ladders, hose operations, and firefighter safety.</p>
-        <a class="cert-link" href="certificates/firefighter-i.pdf" target="_blank" rel="noopener">View credential →</a>
-      </article>
+      <div class="cert-grid">
+        <article class="cert-card quantum-card">
+          <img
+            class="cert-badge"
+            src="assets/certifications/basics-of-quantum-information.png"
+            alt="IBM Basics of Quantum Information badge"
+          >
+          <div class="cert-card-content">
+            <span class="cert-status completed">Completed</span>
+            <h3>Basics of Quantum Information</h3>
+            <div class="cert-issuer">IBM Quantum Learning</div>
+            <p>Foundational coursework in qubits, quantum circuits, measurement, entanglement, and quantum information protocols.</p>
+            <a
+              class="cert-link"
+              href="assets/certifications/basics-of-quantum-information.png"
+              target="_blank"
+              rel="noopener"
+            >View badge →</a>
+          </div>
+        </article>
 
-      <article class="cert-card">
-        <h3>Hazardous Materials First Responder Operations</h3>
-        <div class="cert-issuer">New York State Office of Fire Prevention and Control</div>
-        <p>Operations-level training for defensive response, hazard recognition, isolation, decontamination, and incident support.</p>
-        <a class="cert-link" href="certificates/hmfro.pdf" target="_blank" rel="noopener">View credential →</a>
-      </article>
+        <article class="cert-card quantum-card pending">
+          <div class="cert-placeholder">In progress</div>
+          <div class="cert-card-content">
+            <span class="cert-status">In Progress</span>
+            <h3>Fundamentals of Quantum Algorithms</h3>
+            <div class="cert-issuer">IBM Quantum Learning</div>
+            <p>Coursework covering core quantum-algorithm techniques and their implementation using quantum circuits and Qiskit.</p>
+          </div>
+        </article>
+
+        <article class="cert-card quantum-card pending">
+          <div class="cert-placeholder">Planned</div>
+          <div class="cert-card-content">
+            <span class="cert-status">Planned</span>
+            <h3>Foundations of Quantum Error Correction</h3>
+            <div class="cert-issuer">IBM Quantum Learning</div>
+            <p>Planned study of quantum noise, stabilizer methods, error-correcting codes, and fault-tolerant quantum computation.</p>
+          </div>
+        </article>
+
+        <article class="cert-card quantum-card pending">
+          <div class="cert-placeholder">In progress</div>
+          <div class="cert-card-content">
+            <span class="cert-status">In Progress</span>
+            <h3>Qiskit Global Summer School 2026</h3>
+            <div class="cert-issuer">IBM Quantum</div>
+            <p>Advanced-track program featuring technical lectures, graded labs, and applied work with Qiskit and current quantum-computing methods.</p>
+          </div>
+        </article>
+      </div>
     </div>
 
-    <p class="cert-note">Credential links are set up for PDF files placed in a <span class="mono">certificates</span> folder beside this page.</p>
+    <div class="cert-group">
+      <h3 class="cert-group-title">Emergency Services</h3>
+
+      <div class="cert-grid">
+        <article class="cert-card">
+          <span class="cert-status completed">Certified</span>
+          <h3>Emergency Medical Technician</h3>
+          <div class="cert-issuer">New York State Department of Health</div>
+          <p>Certified to provide prehospital emergency assessment, stabilization, and basic life support care.</p>
+          <div class="emt-note">Credential documentation available upon request.</div>
+        </article>
+
+        <article class="cert-card">
+          <span class="cert-status completed">Completed</span>
+          <h3>New York State Firefighter I Training</h3>
+          <div class="cert-issuer">New York State Office of Fire Prevention and Control</div>
+          <p>Completed the exterior and interior firefighting curriculum that comprises New York State Firefighter I training, with additional firefighter-survival and self-rescue instruction.</p>
+
+          <ul class="cert-components">
+            <li>
+              <strong>Basic Exterior Firefighting Operations with HMFRO</strong><br>
+              79 hours · April 2025
+              <a class="component-link" href="certificates/BEFO.pdf" target="_blank" rel="noopener">View certificate →</a>
+            </li>
+
+            <li>
+              <strong>SCBA / Interior Firefighting Operations–FF1</strong><br>
+              50 hours · May 2025
+              <a class="component-link" href="certificates/IFO.pdf" target="_blank" rel="noopener">View certificate →</a>
+            </li>
+
+            <li>
+              <strong>Firefighter Survival / Self Rescue</strong><br>
+              12 hours · January 2026
+              <a class="component-link" href="certificates/Survival.pdf" target="_blank" rel="noopener">View certificate →</a>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </div>
+
+    <p class="cert-note">
+      Completed course certificates and badges are linked above. In-progress quantum credentials will be updated after completion.
+    </p>
   </section>
+
 
   <section id="resume">
     <span class="eyebrow">Résumé</span>
@@ -653,7 +828,7 @@
     <div class="contact-list">
       <div class="contact-row">
         <span class="label mono">Email</span>
-        <a href="mailto:samueltownshendstryker@gmail.com" data-_href="mailto:samueltownshendstryker@gmail.com">samueltownshendstryker@gmail.com</a>
+        <a href="mailto:Samueltownshendstryker@gmail.com" data-_href="mailto:Samueltownshendstryker@gmail.com">samueltownshendstryker@gmail.com</a>
       </div>
       <div class="contact-row">
         <span class="label mono">Email</span>
