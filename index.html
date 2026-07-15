@@ -1,403 +1,486 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sam Stryker — student researcher working in quantum computing, quantum error mitigation, and quantum sensing.">
-  <meta name="author" content="Sam Stryker">
-  <meta property="og:title" content="Sam Stryker | Quantum Research Portfolio">
-  <meta property="og:description" content="Research, projects, experience, and service in quantum computing, physics, firefighting, and EMS.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://samstryker.github.io">
-  <meta name="theme-color" content="#09111f">
-  <title>Sam Stryker | Quantum Research Portfolio</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sam Stryker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfaf8;
+    --surface: #ffffff;
+    --ink: #1c2430;
+    --ink-soft: #4a5568;
+    --rule: #e3e1dc;
+    --maroon: #7c1f2a;
+    --maroon-soft: #9a3b46;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  a {
+    color: var(--maroon);
+    text-decoration: none;
+  }
+  a:hover { text-decoration: underline; }
+
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* Nav */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(251,250,248,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--rule);
+    z-index: 100;
+  }
+  .nav-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-name {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    font-size: 0.9rem;
+  }
+  .nav-links a {
+    color: var(--ink-soft);
+  }
+  .nav-links a:hover { color: var(--maroon); text-decoration: none; }
+
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--maroon);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* Hero */
+  #intro {
+    padding-top: 88px;
+    padding-bottom: 64px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+  .photo-placeholder {
+    flex-shrink: 0;
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    color: var(--ink-soft);
+  }
+  .intro-text h1 {
+    font-size: 2.1rem;
+    margin-bottom: 8px;
+  }
+  .intro-text .role {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+  }
+  .intro-text p {
+    color: var(--ink-soft);
+    max-width: 52ch;
+    margin: 0;
+  }
+
+  h2.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 28px;
+  }
+
+  /* Research */
+  .research-entry {
+    margin-bottom: 32px;
+  }
+  .research-entry:last-child { margin-bottom: 0; }
+  .research-entry h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .research-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .research-entry p {
+    color: var(--ink-soft);
+    margin: 0 0 6px 0;
+  }
+  .stat {
+    color: var(--maroon-soft);
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+  }
+  .status-tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .interests-list {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .interests-list h3 {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .interests-list p {
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* Education */
+  .edu-entry {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px 24px;
+    margin-bottom: 26px;
+  }
+  .edu-entry:last-child { margin-bottom: 0; }
+  .edu-entry h3 {
+    font-size: 1.05rem;
+  }
+  .edu-entry .edu-sub {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin-top: 2px;
+  }
+  .edu-entry .edu-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .honors {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .honors h3 {
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .honors ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--ink-soft);
+  }
+  .honors li { margin-bottom: 4px; }
+
+  /* Experience */
+  .exp-entry {
+    margin-bottom: 22px;
+  }
+  .exp-entry:last-child { margin-bottom: 0; }
+  .exp-entry h3 {
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+  .exp-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    display: block;
+    margin: 2px 0 6px 0;
+  }
+  .exp-entry p {
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* Resume */
+  #resume .resume-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 24px 28px;
+  }
+  .resume-box p {
+    margin: 4px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+  .btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    background: var(--maroon);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+  .btn:hover {
+    background: var(--maroon-soft);
+    text-decoration: none;
+  }
+
+  /* Contact */
+  #contact .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .contact-row {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    font-size: 0.98rem;
+  }
+  .contact-row .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    width: 90px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  footer {
+    text-align: center;
+    padding: 32px 24px 48px 24px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 600px) {
+    #intro { flex-direction: column; align-items: flex-start; gap: 20px; padding-top: 48px; }
+    section { padding: 48px 0; }
+    .edu-entry { grid-template-columns: 1fr; }
+    .resume-box { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .nav-links { gap: 14px; font-size: 0.82rem; }
+  }
+</style>
 </head>
-
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="Sam Stryker home">
-        <span class="brand-mark">S</span>
-        <span>Sam Stryker</span>
-      </a>
-
-      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
-        <span class="sr-only">Toggle navigation</span>
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
-        <a href="#research">Research</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#service">Service</a>
-        <a href="#contact">Contact</a>
-      </nav>
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">Sam Stryker</span>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#resume">Résumé</a>
+      <a href="#contact">Contact</a>
     </div>
-  </header>
+  </div>
+</nav>
 
-  <main id="main">
-    <section id="top" class="hero">
-      <div class="hero-grid container">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Quantum computing · Physics · Engineering</p>
-          <h1>Building practical methods for noisy quantum systems.</h1>
-          <p class="hero-intro">
-            I am Sam Stryker, a student researcher focused on quantum error mitigation,
-            quantum sensing, and the behavior of quantum systems under real-world noise.
-            My work combines theory, simulation, and experiments on quantum hardware.
-          </p>
+<main>
 
-          <div class="hero-actions">
-            <a class="button button-primary" href="#research">Explore my research</a>
-            <a class="button button-secondary" href="#contact">Get in touch</a>
-          </div>
-
-          <div class="hero-links" aria-label="Profile links">
-            <a href="https://github.com/samstryker" target="_blank" rel="noreferrer">GitHub ↗</a>
-            <a href="YOUR_LINKEDIN_URL" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-            <a href="assets/Sam-Stryker-Resume.pdf">Résumé ↗</a>
-          </div>
-        </div>
-
-        <aside class="hero-card reveal" aria-label="Research profile">
-          <div class="orbit" aria-hidden="true">
-            <span class="orbit-core">|ψ⟩</span>
-            <span class="orbit-dot orbit-dot-one"></span>
-            <span class="orbit-dot orbit-dot-two"></span>
-            <span class="orbit-dot orbit-dot-three"></span>
-          </div>
-          <div>
-            <p class="mini-label">Current focus</p>
-            <h2>Scalable Bayesian error mitigation</h2>
-            <p>
-              Developing quantum-derived priors from shadows, calibration data,
-              and targeted process characterization.
-            </p>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="stats-section" aria-label="Selected highlights">
-      <div class="container stats-grid">
-        <article>
-          <strong>87%</strong>
-          <span>reported reduction in mean absolute error in an initial Bayesian-informed ZNE experiment</span>
-        </article>
-        <article>
-          <strong>127</strong>
-          <span>qubits on IBM Eagle hardware used in experimental work</span>
-        </article>
-        <article>
-          <strong>2</strong>
-          <span>primary research directions: error mitigation and quantum sensing</span>
-        </article>
-        <article>
-          <strong>24/7</strong>
-          <span>commitment to public service through firefighting and EMS</span>
-        </article>
-      </div>
-    </section>
-
-    <section id="research" class="section">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Selected research</p>
-          <h2>Research at the boundary between theory and hardware</h2>
-          <p>
-            I am interested in methods that make quantum devices more useful now,
-            while also studying the physical mechanisms that limit their performance.
-          </p>
-        </div>
-
-        <div class="research-grid">
-          <article class="research-card featured reveal">
-            <div class="card-topline">
-              <span>Quantum error mitigation</span>
-              <span>Completed study</span>
-            </div>
-            <h3>Bayesian-Informed Zero-Noise Extrapolation</h3>
-            <p>
-              A framework combining zero-noise extrapolation with simulation-derived
-              Bayesian priors to improve the stability and accuracy of expectation-value
-              estimates from noisy quantum hardware.
-            </p>
-            <ul class="tag-list" aria-label="Methods">
-              <li>Qiskit</li>
-              <li>IBM Quantum</li>
-              <li>Bayesian inference</li>
-              <li>Noise folding</li>
-            </ul>
-            <div class="result-box">
-              <span>Initial result</span>
-              <strong>MAE reduced by approximately 87%</strong>
-              <p>
-                In a reported three-qubit experiment, the Bayesian estimate was substantially
-                closer to the ideal value than the unconstrained extrapolation.
-              </p>
-            </div>
-          </article>
-
-          <article class="research-card reveal">
-            <div class="card-topline">
-              <span>Quantum error mitigation</span>
-              <span>Ongoing</span>
-            </div>
-            <h3>Quantum-Derived Priors for Scalable Error Mitigation</h3>
-            <p>
-              Extending Bayesian-informed error mitigation beyond classically simulable
-              systems using quantum shadows, calibration-derived information, and limited
-              process characterization of high-impact circuit regions.
-            </p>
-            <ul class="tag-list" aria-label="Methods">
-              <li>Classical shadows</li>
-              <li>Process matrices</li>
-              <li>Calibration data</li>
-              <li>VQE</li>
-            </ul>
-          </article>
-
-          <article class="research-card reveal">
-            <div class="card-topline">
-              <span>Quantum sensing</span>
-              <span>Research proposal</span>
-            </div>
-            <h3>Hadron Irradiation of NV-Center Diamonds</h3>
-            <p>
-              A proposed study of how GeV-scale hadron irradiation changes the spin
-              coherence and sensing performance of nitrogen-vacancy centers in diamond,
-              with relevance to radiation-rich environments.
-            </p>
-            <ul class="tag-list" aria-label="Topics">
-              <li>NV centers</li>
-              <li>Spin coherence</li>
-              <li>Radiation damage</li>
-              <li>Quantum sensing</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="section section-alt">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Technical work</p>
-          <h2>Projects and computational methods</h2>
-          <p>
-            Selected work in quantum software, simulation, statistical analysis,
-            and experimental design.
-          </p>
-        </div>
-
-        <div class="project-grid">
-          <article class="project-card reveal">
-            <span class="project-number">01</span>
-            <h3>Local Circuit Folding for ZNE</h3>
-            <p>
-              Implemented noise scaling through local unitary folding,
-              using factors such as λ = 1, 3, 5, 7, and 9.
-            </p>
-            <a href="https://github.com/samstryker" target="_blank" rel="noreferrer">View GitHub profile ↗</a>
-          </article>
-
-          <article class="project-card reveal">
-            <span class="project-number">02</span>
-            <h3>Quantum Hardware Data Analysis</h3>
-            <p>
-              Built workflows for expectation-value estimation, uncertainty analysis,
-              extrapolation, and comparison against ideal simulation.
-            </p>
-            <a href="https://github.com/samstryker" target="_blank" rel="noreferrer">View repositories ↗</a>
-          </article>
-
-          <article class="project-card reveal">
-            <span class="project-number">03</span>
-            <h3>Variational Quantum Algorithms</h3>
-            <p>
-              Explored VQE-style circuits, Hamiltonian estimation, ansatz design,
-              and noisy simulation for molecular and model-system applications.
-            </p>
-            <a href="https://github.com/samstryker" target="_blank" rel="noreferrer">View repositories ↗</a>
-          </article>
-
-          <article class="project-card reveal">
-            <span class="project-number">04</span>
-            <h3>Quantum Education and Communication</h3>
-            <p>
-              Created technical explanations, figures, and presentations translating
-              advanced quantum ideas for broader scientific audiences.
-            </p>
-            <a href="#contact">Request materials →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience" class="section">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Education and experience</p>
-          <h2>Learning across research, engineering, and public service</h2>
-        </div>
-
-        <div class="timeline">
-          <article class="timeline-item reveal">
-            <div class="timeline-marker"></div>
-            <div class="timeline-meta">
-              <span>2026</span>
-              <span>Quantum computing</span>
-            </div>
-            <div>
-              <h3>Qiskit Global Summer School</h3>
-              <p>
-                Advanced-track study in quantum computing, combining technical lectures,
-                guided labs, and implementation work in Qiskit.
-              </p>
-            </div>
-          </article>
-
-          <article class="timeline-item reveal">
-            <div class="timeline-marker"></div>
-            <div class="timeline-meta">
-              <span>2026</span>
-              <span>International study</span>
-            </div>
-            <div>
-              <h3>Sungkyunkwan University International Summer Semester</h3>
-              <p>
-                International academic experience in Seoul, South Korea, with coursework
-                and cross-cultural study.
-              </p>
-            </div>
-          </article>
-
-          <article class="timeline-item reveal">
-            <div class="timeline-marker"></div>
-            <div class="timeline-meta">
-              <span>2025</span>
-              <span>Molecular engineering</span>
-            </div>
-            <div>
-              <h3>University of Chicago Summer Session</h3>
-              <p>
-                Completed Pathways in Molecular Engineering, including laboratory work,
-                technical writing, and exposure to research across molecular engineering.
-              </p>
-            </div>
-          </article>
-
-          <article class="timeline-item reveal">
-            <div class="timeline-marker"></div>
-            <div class="timeline-meta">
-              <span>Ongoing</span>
-              <span>Independent research</span>
-            </div>
-            <div>
-              <h3>Quantum Computing Research</h3>
-              <p>
-                Conducting long-term research in quantum error mitigation with mentorship
-                and experimental work using IBM quantum hardware.
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="recognition" class="section section-alt">
-      <div class="container split-section">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Recognition</p>
-          <h2>Selected awards and milestones</h2>
-        </div>
-
-        <div class="recognition-list">
-          <article class="recognition-item reveal">
-            <span>Westchester Science & Engineering Fair</span>
-            <strong>Third Place — Computer Science</strong>
-          </article>
-          <article class="recognition-item reveal">
-            <span>Somers Science Fair</span>
-            <strong>First Place — Research Proposal</strong>
-          </article>
-          <article class="recognition-item reveal">
-            <span>University of Chicago Summer Session</span>
-            <strong>Final course grade: 100%</strong>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="service" class="section">
-      <div class="container service-grid">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Service</p>
-          <h2>Firefighting and emergency medical services</h2>
-          <p>
-            Outside research, I serve my community through volunteer firefighting
-            and emergency medical response. These roles have shaped how I approach
-            teamwork, preparation, responsibility, and decision-making under pressure.
-          </p>
-        </div>
-
-        <div class="service-cards">
-          <article class="service-card reveal">
-            <span>Fire</span>
-            <h3>Volunteer Firefighter</h3>
-            <p>
-              Firefighter I training and operational experience emphasizing teamwork,
-              technical competence, and disciplined response.
-            </p>
-          </article>
-
-          <article class="service-card reveal">
-            <span>EMS</span>
-            <h3>Emergency Medical Technician</h3>
-            <p>
-              Emergency medical training and ambulance service focused on patient care,
-              assessment, communication, and calm decision-making.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-      <div class="container contact-grid">
-        <div class="reveal">
-          <p class="eyebrow">Contact</p>
-          <h2>Interested in quantum research, collaboration, or technical discussion?</h2>
-        </div>
-
-        <div class="contact-panel reveal">
-          <p>
-            I welcome conversations about quantum error mitigation, quantum sensing,
-            research opportunities, and scientific communication.
-          </p>
-          <a class="button button-primary" href="mailto:YOUR_EMAIL_ADDRESS">Email me</a>
-
-          <div class="contact-links">
-            <a href="https://github.com/samstryker" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="YOUR_LINKEDIN_URL" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="assets/Sam-Stryker-Resume.pdf">Résumé</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p>© <span id="year"></span> Sam Stryker</p>
-      <p>Built with HTML, CSS, and JavaScript · Hosted on GitHub Pages</p>
+  <section id="intro">
+    <div class="photo-placeholder">SS</div>
+    <div class="intro-text">
+      <h1>Sam Stryker</h1>
+      <div class="role">Incoming Physics BS / Molecular Engineering BS (Quantum Engineering Track) &mdash; University of Chicago, Class of 2030</div>
+      <p>Working on quantum error mitigation on superconducting hardware, with an EALC minor focused on Japanese. Also a certified volunteer firefighter and EMT trainee.</p>
     </div>
-  </footer>
+  </section>
+
+  <section id="research">
+    <span class="eyebrow">Research &amp; Interests</span>
+    <h2 class="section-title">Selected Research</h2>
+
+    <div class="research-entry">
+      <span class="research-meta">IBM T.J. Watson Research Center &middot; ibm_kyiv, ibm_torino</span>
+      <h3>Bayesian-Augmented Zero-Noise Extrapolation (BZNE)</h3>
+      <p>A framework combining classical-shadow-informed priors with Bayesian zero-noise extrapolation to mitigate error on real superconducting quantum hardware, developed in collaboration with a research scientist at IBM T.J. Watson Research Center. Tested on H&#8322; and LiH VQE problems.</p>
+      <p>H&#8322; showed a <span class="stat">94.1% reduction</span> in error versus the unmitigated result. LiH performed worse than the unmitigated baseline &mdash; a result traced to biased priors, and a useful negative result in its own right.</p>
+      <p>Placed <span class="stat">3rd, Computer Science</span> at WESEF; submitted to Regeneron STS.</p>
+    </div>
+
+    <div class="research-entry">
+      <span class="research-meta">with E. Gentry, A. Joseph, A. Schofill</span>
+      <h3>Hedging Language in arXiv Abstracts and Citation Impact<span class="status-tag">In Progress</span></h3>
+      <p>A statistical study of how hedging language in physics preprint abstracts relates to downstream citation counts, built on a full data pipeline (arXiv metadata, Semantic Scholar citation retrieval) and written in ACM two-column conference format.</p>
+    </div>
+
+    <div class="research-entry">
+      <span class="research-meta">Team "Shine Bright Like a Diamond" &middot; CERN Beamline for Schools</span>
+      <h3>Can Cosmic Rays Degrade a Quantum Sensor?<span class="status-tag">Proposal</span></h3>
+      <p>A proposal to study GeV hadron irradiation of NV-center diamond quantum sensors at the CERN T9 beamline, with post-irradiation characterization support from Prof. Carlos Meriles (CUNY City College). The team did not place, but the work led to an invitation from Prof. Meriles for a funded summer lab visit on radiation trajectory visualization in diamond.</p>
+    </div>
+
+    <div class="interests-list">
+      <h3>Research Interests</h3>
+      <p>Quantum error mitigation, topological quantum computing, Majorana fermions and superconducting qubits, RF/SDR systems, and applied cybersecurity.</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <span class="eyebrow">Education</span>
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu-entry">
+      <div>
+        <h3>University of Chicago</h3>
+        <div class="edu-sub">BS Physics &amp; BS Molecular Engineering (Quantum Engineering Track) &middot; Minor, East Asian Languages &amp; Civilizations (Japanese)</div>
+      </div>
+      <div class="edu-date">Class of 2030</div>
+    </div>
+
+    <div class="edu-entry">
+      <div>
+        <h3>Horace Greeley High School</h3>
+        <div class="edu-sub">Chappaqua, NY</div>
+      </div>
+      <div class="edu-date">Graduate</div>
+    </div>
+
+    <div class="honors">
+      <h3>Honors &amp; Programs</h3>
+      <ul>
+        <li>3rd Place, Computer Science &mdash; Westchester Engineering Science Fair (WESEF)</li>
+        <li>Regeneron Science Talent Search, submitted entrant</li>
+        <li>SKKU International Summer School, Seoul &mdash; Statistics in Python</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="experience">
+    <span class="eyebrow">Experience &amp; Service</span>
+    <h2 class="section-title">Experience &amp; Service</h2>
+
+    <div class="exp-entry">
+      <h3>Certified Volunteer Firefighter</h3>
+      <span class="exp-meta">Chappaqua Fire Department</span>
+      <p>Active volunteer firefighter serving the Chappaqua community.</p>
+    </div>
+
+    <div class="exp-entry">
+      <h3>EMT Trainee</h3>
+      <span class="exp-meta">Chappaqua EMS (since Jan 2026) &middot; Pleasantville Emergency Services (since Dec 2025)</span>
+      <p>Training and active service across two emergency medical services organizations.</p>
+    </div>
+
+    <div class="exp-entry">
+      <h3>Team Captain, Science Olympiad</h3>
+      <span class="exp-meta">Astronomy &amp; Circuit Lab events</span>
+      <p>Led team preparation across Astronomy (spectroscopy, orbital mechanics, variable stars) and Circuit Lab (analog and digital circuit analysis).</p>
+    </div>
+
+    <div class="exp-entry">
+      <h3>Design Lead</h3>
+      <span class="exp-meta">FIRST Robotics Competition &middot; Founding Member</span>
+      <p>Founding member and design lead for the team's robotics platform.</p>
+    </div>
+  </section>
+
+  <section id="resume">
+    <span class="eyebrow">Résumé</span>
+    <h2 class="section-title">Résumé</h2>
+    <div class="resume-box">
+      <div>
+        <h3 style="font-family:'Inter',sans-serif; font-size:1rem; font-weight:600;">Download my résumé</h3>
+        <p>PDF, updated regularly</p>
+      </div>
+      <a class="btn" href="resume.pdf" download>Download PDF</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <span class="eyebrow">Contact</span>
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="contact-list">
+      <div class="contact-row">
+        <span class="label mono">Email</span>
+        <a href="mailto:Samueltownshendstryker@gmail.com">Samueltownshendstryker@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <span class="label mono">Email</span>
+        <a href="mailto:sstryker@uchicago.edu">sstryker@uchicago.edu</a>
+      </div>
+      <div class="contact-row">
+        <span class="label mono">LinkedIn</span>
+        <a href="https://linkedin.com/in/sam-stryker" target="_blank" rel="noopener">linkedin.com/in/sam-stryker</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2026 Sam Stryker
+</footer>
+
 </body>
 </html>
