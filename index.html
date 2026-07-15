@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sam Stryker</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #fbfaf8;
@@ -241,6 +240,33 @@
   }
   .honors li { margin-bottom: 4px; }
 
+  /* Education details */
+  .edu-details {
+    grid-column: 1 / -1;
+    margin: 8px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+  .edu-details ul {
+    margin: 8px 0 0 0;
+    padding-left: 18px;
+  }
+  .edu-details li { margin-bottom: 4px; }
+
+  .coursework {
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .coursework h3 {
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .coursework p { margin: 0; color: var(--ink-soft); }
+
   /* Experience */
   .exp-entry {
     margin-bottom: 22px;
@@ -261,6 +287,50 @@
   .exp-entry p {
     color: var(--ink-soft);
     margin: 0;
+  }
+
+  /* Certifications */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .cert-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 190px;
+  }
+  .cert-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .cert-issuer {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .cert-card p {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    margin: 0 0 16px 0;
+  }
+  .cert-link {
+    margin-top: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .cert-note {
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    margin: 18px 0 0 0;
   }
 
   /* Resume */
@@ -326,11 +396,65 @@
     section { padding: 48px 0; }
     .edu-entry { grid-template-columns: 1fr; }
     .resume-box { flex-direction: column; align-items: flex-start; gap: 14px; }
-    .nav-links { gap: 14px; font-size: 0.82rem; }
+    .nav-links { gap: 12px; font-size: 0.78rem; overflow-x: auto; }
+    .cert-grid { grid-template-columns: 1fr; }
   }
+
+  /* Edit mode */
+  .editor-bar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+  }
+  .editor-btn {
+    background: var(--ink);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  }
+  .editor-btn:hover { background: var(--maroon); }
+  .editor-btn.active { background: var(--maroon); }
+  .editor-btn.export { background: #2d6a4f; }
+  .editor-btn.export:hover { background: #235c42; }
+
+  body.edit-mode [data-editable] {
+    outline: 1px dashed transparent;
+    border-radius: 3px;
+    transition: outline-color 0.15s, background 0.15s;
+    cursor: text;
+  }
+  body.edit-mode [data-editable]:hover {
+    outline-color: var(--maroon-soft);
+    background: rgba(124,31,42,0.05);
+  }
+  body.edit-mode [data-editable]:focus {
+    outline: 1px solid var(--maroon);
+    background: rgba(124,31,42,0.08);
+  }
+
+  .editor-hint {
+    display: none;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 24px;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: #fff;
+    background: var(--maroon);
+  }
+  body.edit-mode .editor-hint { display: block; }
 </style>
 </head>
-<body>
+<body class="edit-mode">
 
 <nav>
   <div class="nav-inner">
@@ -339,6 +463,7 @@
       <a href="#research">Research</a>
       <a href="#education">Education</a>
       <a href="#experience">Experience</a>
+      <a href="#certifications">Certifications</a>
       <a href="#resume">Résumé</a>
       <a href="#contact">Contact</a>
     </div>
@@ -351,8 +476,8 @@
     <div class="photo-placeholder">SS</div>
     <div class="intro-text">
       <h1>Sam Stryker</h1>
-      <div class="role">Incoming Physics BS / Molecular Engineering BS (Quantum Engineering Track) &mdash; University of Chicago, Class of 2030</div>
-      <p>Working on quantum error mitigation on superconducting hardware. Volunteer firefighter and EMT. </p>
+      <div class="role">Incoming student in Physics and Molecular Engineering (Quantum Engineering Track) — University of Chicago, Class of 2030</div>
+      <p>Student researcher focused on quantum error mitigation, quantum sensing, and the reliability of emerging quantum technologies. Volunteer firefighter and EMT serving communities in Westchester County, New York.</p>
     </div>
   </section>
 
@@ -361,10 +486,10 @@
     <h2 class="section-title">Selected Research</h2>
 
     <div class="research-entry">
-      <span class="research-meta">IBM T.J. Watson Research Center &middot; ibm_kyiv, ibm_torino</span>
+      <span class="research-meta">IBM T.J. Watson Research Center · ibm_kyiv, ibm_torino</span>
       <h3>Bayesian-Augmented Zero-Noise Extrapolation (BZNE)</h3>
-      <p>A framework combining classical-shadow-informed priors with Bayesian zero-noise extrapolation to mitigate error on real superconducting quantum hardware, developed in collaboration with a research scientist at IBM T.J. Watson Research Center. Tested on H&#8322; and LiH VQE problems.</p>
-      <p>H&#8322; showed a <span class="stat">94.1% reduction</span> in error versus the unmitigated result. LiH performed worse than the unmitigated baseline &mdash; a result traced to biased priors, and a useful negative result in its own right.</p>
+      <p>A framework combining classical-shadow-informed priors with Bayesian zero-noise extrapolation to mitigate error on real superconducting quantum hardware, developed in collaboration with a research scientist at IBM T.J. Watson Research Center. Tested on H₂ and LiH VQE problems.</p>
+      <p><br></p>
       <p>Placed <span class="stat">3rd, Computer Science</span> at WESEF; submitted to Regeneron STS.</p>
     </div>
 
@@ -375,14 +500,14 @@
     </div>
 
     <div class="research-entry">
-      <span class="research-meta">Team "Shine Bright Like a Diamond" &middot; CERN Beamline for Schools</span>
+      <span class="research-meta">CERN Beamline for Schools · Supported by The Meriles Group @ CCNY</span>
       <h3>Can Cosmic Rays Degrade a Quantum Sensor?<span class="status-tag">Proposal</span></h3>
-      <p>A proposal to study GeV hadron irradiation of NV-center diamond quantum sensors at the CERN T9 beamline, with post-irradiation characterization support from Prof. Carlos Meriles (CUNY City College). The team did not place, but the work led to an invitation from Prof. Meriles for a funded summer lab visit on radiation trajectory visualization in diamond.</p>
+      <p>A proposal to study GeV hadron irradiation of NV-center diamond quantum sensors at the CERN T9 beamline, with post-irradiation characterization support from Prof. Carlos Meriles (CUNY City College). Work led to an invitation from Prof. Carlos Meriles for a funded summer lab internship on radiation trajectory visualization in diamond.</p>
     </div>
 
     <div class="interests-list">
       <h3>Research Interests</h3>
-      <p>Quantum error mitigation, topological quantum computing, Majorana fermions and superconducting qubits, RF/SDR systems, and applied cybersecurity.</p>
+      <p>Quantum error mitigation/correction, quantum sensing, topological quantum computing</p>
     </div>
   </section>
 
@@ -393,26 +518,60 @@
     <div class="edu-entry">
       <div>
         <h3>University of Chicago</h3>
-        <div class="edu-sub">BS Physics &amp; BS Molecular Engineering (Quantum Engineering Track) &middot; Minor, East Asian Languages &amp; Civilizations (Japanese)</div>
+        <div class="edu-sub">Incoming undergraduate · Physics and Molecular Engineering (Quantum Engineering Track)</div>
       </div>
       <div class="edu-date">Class of 2030</div>
+      <div class="edu-details">
+        Planned academic focus in quantum information science, condensed-matter physics, and the engineering of quantum devices. Interested in combining rigorous physics training with experimental and computational work on fault-tolerant quantum systems.
+      </div>
     </div>
 
     <div class="edu-entry">
       <div>
         <h3>Horace Greeley High School</h3>
-        <div class="edu-sub">Chappaqua, NY</div>
+        <div class="edu-sub">Chappaqua, New York · Three-Year Science Research Program</div>
       </div>
-      <div class="edu-date">Graduate</div>
+      <div class="edu-date">Class of 2026</div>
+      <div class="edu-details">
+        Conducted independent research in quantum error mitigation with mentorship from IBM Research. Coursework included advanced calculus, calculus-based mechanics and electromagnetism, chemistry, computer science, and statistical analysis.
+      </div>
+    </div>
+
+    <div class="edu-entry">
+      <div>
+        <h3>Sungkyunkwan University</h3>
+        <div class="edu-sub">International Summer Semester · Seoul, South Korea</div>
+      </div>
+      <div class="edu-date">Summer 2026</div>
+      <div class="edu-details">
+        Studied statistical computing in Python in an international university environment while continuing independent work in quantum computing and scientific communication.
+      </div>
+    </div>
+
+    <div class="edu-entry">
+      <div>
+        <h3>University of Chicago Summer Session</h3>
+        <div class="edu-sub">Pathways in Molecular Engineering</div>
+      </div>
+      <div class="edu-date">Summer 2025</div>
+      <div class="edu-details">
+        Completed an intensive introduction to molecular engineering spanning materials, energy, biotechnology, and quantum engineering, including laboratory and research-facility experiences.
+      </div>
     </div>
 
     <div class="honors">
-      <h3>Honors &amp; Programs</h3>
+      <h3>Selected Honors &amp; Programs</h3>
       <ul>
-        <li>3rd Place, Computer Science &mdash; Westchester Engineering Science Fair (WESEF)</li>
-        <li>Regeneron Science Talent Search, submitted entrant</li>
-        <li>SKKU International Summer School, Seoul &mdash; Statistics in Python</li>
+        <li>3rd Place, Computer Science — Westchester Engineering Science Fair (WESEF)</li>
+        <li>1st Place, Somers Science Fair — Research Proposal</li>
+        <li>Regeneron Science Talent Search — Submitted Entrant</li>
+        <li>Qiskit Global Summer School 2026 — Advanced Track</li>
       </ul>
+    </div>
+
+    <div class="coursework">
+      <h3>Technical Preparation</h3>
+      <p>Python, NumPy, Qiskit, Bayesian inference, statistical modeling, scientific writing, circuit analysis, and quantum algorithms.</p>
     </div>
   </section>
 
@@ -423,13 +582,13 @@
     <div class="exp-entry">
       <h3>Certified Volunteer Firefighter</h3>
       <span class="exp-meta">Chappaqua Fire Department</span>
-      <p>Active volunteer firefighter serving the Chappaqua community.</p>
+      <p>Responds to fire, rescue, alarm, and public-service incidents as an active member of the department.</p>
     </div>
 
     <div class="exp-entry">
-      <h3>EMT Trainee</h3>
-      <span class="exp-meta">Chappaqua EMS (since Jan 2026) &middot; Pleasantville Emergency Services (since Dec 2025)</span>
-      <p>Training and active service across two emergency medical services organizations.</p>
+      <h3>EMT</h3>
+      <span class="exp-meta">Chappaqua EMS (since Jan 2026) · Pleasantville Emergency Services (since Dec 2025)</span>
+      <p>Provides volunteer prehospital care and operational support across two community emergency medical services organizations.</p>
     </div>
 
     <div class="exp-entry">
@@ -440,9 +599,40 @@
 
     <div class="exp-entry">
       <h3>Design Lead</h3>
-      <span class="exp-meta">FIRST Robotics Competition &middot; Founding Member</span>
+      <span class="exp-meta">FIRST Robotics Competition · Founding Member</span>
       <p>Founding member and design lead for the team's robotics platform.</p>
     </div>
+  </section>
+
+
+  <section id="certifications">
+    <span class="eyebrow">Credentials</span>
+    <h2 class="section-title">Certifications</h2>
+
+    <div class="cert-grid">
+      <article class="cert-card">
+        <h3>Emergency Medical Technician</h3>
+        <div class="cert-issuer">New York State</div>
+        <p>Certification for prehospital emergency assessment, stabilization, and basic life support care.</p>
+        <a class="cert-link" href="certificates/nys-emt.pdf" target="_blank" rel="noopener">View credential →</a>
+      </article>
+
+      <article class="cert-card">
+        <h3>Firefighter I</h3>
+        <div class="cert-issuer">New York State Fire Training</div>
+        <p>Foundational structural firefighting training covering fire behavior, suppression, rescue, ladders, hose operations, and firefighter safety.</p>
+        <a class="cert-link" href="certificates/firefighter-i.pdf" target="_blank" rel="noopener">View credential →</a>
+      </article>
+
+      <article class="cert-card">
+        <h3>Hazardous Materials First Responder Operations</h3>
+        <div class="cert-issuer">New York State Fire Training</div>
+        <p>Operations-level training for defensive response, hazard recognition, isolation, decontamination, and incident support.</p>
+        <a class="cert-link" href="certificates/hmfro.pdf" target="_blank" rel="noopener">View credential →</a>
+      </article>
+    </div>
+
+    <p class="cert-note">Credential links are set up for PDF files placed in a <span class="mono">certificates</span> folder beside this page.</p>
   </section>
 
   <section id="resume">
@@ -453,7 +643,7 @@
         <h3 style="font-family:'Inter',sans-serif; font-size:1rem; font-weight:600;">Download my résumé</h3>
         <p>PDF, updated regularly</p>
       </div>
-      <a class="btn" href="resume.pdf" download>Download PDF</a>
+      <a class="btn" href="resume.pdf" download="" data-_href="resume.pdf">Download PDF</a>
     </div>
   </section>
 
@@ -463,15 +653,15 @@
     <div class="contact-list">
       <div class="contact-row">
         <span class="label mono">Email</span>
-        <a href="mailto:Samueltownshendstryker@gmail.com">Samueltownshendstryker@gmail.com</a>
+        <a href="mailto:Samueltownshendstryker@gmail.com" data-_href="mailto:Samueltownshendstryker@gmail.com">samueltownshendstryker@gmail.com</a>
       </div>
       <div class="contact-row">
         <span class="label mono">Email</span>
-        <a href="mailto:sstryker@uchicago.edu">sstryker@uchicago.edu</a>
+        <a href="mailto:sstryker@uchicago.edu" data-_href="mailto:sstryker@uchicago.edu">sstryker@uchicago.edu</a>
       </div>
       <div class="contact-row">
         <span class="label mono">LinkedIn</span>
-        <a href="https://linkedin.com/in/sam-stryker" target="_blank" rel="noopener">linkedin.com/in/sam-stryker</a>
+        <a href="https://linkedin.com/in/sam-stryker" target="_blank" rel="noopener" data-_href="https://linkedin.com/in/sam-stryker">linkedin.com/in/sam-stryker</a>
       </div>
     </div>
   </section>
@@ -479,8 +669,15 @@
 </main>
 
 <footer>
-  &copy; 2026 Sam Stryker
+  © 2026 Sam Stryker
 </footer>
 
-</body>
-</html>
+
+
+
+
+
+
+
+
+</body></html>
