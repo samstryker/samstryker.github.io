@@ -458,6 +458,25 @@
     text-decoration: none;
   }
 
+  .resume-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--maroon);
+  border: 1px solid var(--maroon);
+}
+
+.btn-secondary:hover {
+  background: rgba(124, 31, 42, 0.07);
+  color: var(--maroon);
+}
+
+  
+
   /* Contact */
   #contact .contact-list {
     display: flex;
@@ -851,7 +870,24 @@
         <h3 style="font-family:'Inter',sans-serif; font-size:1rem; font-weight:600;">Download my résumé</h3>
         <p>PDF, updated regularly</p>
       </div>
-      <a class="btn" href="resume.pdf" download="" data-_href="resume.pdf">Download PDF</a>
+      <div class="resume-actions">
+  <a
+    class="btn btn-secondary"
+    href="resume.pdf"
+    target="_blank"
+    rel="noopener"
+  >
+    View Résumé
+  </a>
+
+  <a
+    class="btn"
+    href="resume.pdf"
+    download
+  >
+    Download PDF
+  </a>
+</div>
     </div>
   </section>
 
