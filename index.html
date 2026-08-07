@@ -577,6 +577,7 @@
     <span class="nav-name">Sam Stryker</span>
     <div class="nav-links">
       <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
       <a href="#education">Education</a>
       <a href="#experience">Experience</a>
       <a href="#certifications">Certifications</a>
@@ -602,28 +603,45 @@
     <h2 class="section-title">Selected Research</h2>
 
     <div class="research-entry">
-      <span class="research-meta">IBM T.J. Watson Research Center · ibm_kyiv, ibm_torino</span>
-      <h3>Bayesian-Augmented Zero-Noise Extrapolation (BZNE)</h3>
-      <p>A framework combining classical-shadow-informed priors with Bayesian zero-noise extrapolation to mitigate error on real superconducting quantum hardware, developed with mentorship from research scientist Dr. Malcolm Carroll at the IBM T.J. Watson Research Center. Tested on H₂ and LiH VQE problems.</p>
-      <p><br></p>
-      <p>Placed <span class="stat">3rd, Computer Science</span> at WESEF; submitted to Regeneron STS.</p>
+      <span class="research-meta">IBM T.J. Watson Research Center · ibm_kyiv</span>
+      <h3>Phase I: Bayesian-Augmented Zero-Noise Extrapolation (BZNE)</h3>
+      <p>A Bayesian correction framework using classically simulated, calibration-informed priors to regularize noisy hardware measurements before zero-noise extrapolation, developed with mentorship from research scientist Dr. Malcolm Carroll at the IBM T.J. Watson Research Center. On a 3-qubit test circuit on ibm_kyiv, reduced mean absolute error by <span class="stat">87%</span> relative to standard ZNE (0.040 vs. 0.306) and improved extrapolation fit from R² = 0.962 to 0.9999.</p>
+      <p>Placed <span class="stat">3rd, Computer Science</span> at the Regeneron Westchester Science &amp; Engineering Fair (760+ competitors); submitted to Regeneron STS. Code available on GitHub.</p>
     </div>
 
     <div class="research-entry">
-      <span class="research-meta">with E. Gentry, A. Joseph, A. Schofill</span>
-      <h3>Hedging Language in arXiv Abstracts and Citation Impact<span class="status-tag">In Progress</span></h3>
-      <p>A statistical study of how hedging language in physics preprint abstracts relates to downstream citation counts, built on a full data pipeline (arXiv metadata, Semantic Scholar citation retrieval) and written in ACM two-column conference format.</p>
+      <span class="research-meta">IBM T.J. Watson Research Center · ibm_torino</span>
+      <h3>Phase II: Shadow-Informed Priors for Bayesian ZNE</h3>
+      <p>Extended the framework with priors derived from quantum shadow tomography rather than classical simulation, removing Phase I's ~50-qubit classical-simulation ceiling. Benchmarked on H₂ and LiH VQE circuits on IBM's 133-qubit ibm_torino backend using Hamiltonian Monte Carlo posterior inference.</p>
+      <p>Shadow-derived priors did not outperform standard ZNE in raw accuracy under weak noise-scaling, but the framework delivered full Bayesian uncertainty quantification, hardware-specific noise characterization, and quantitative diagnostics of prior–likelihood mismatch.</p>
     </div>
 
     <div class="research-entry">
       <span class="research-meta">CERN Beamline for Schools · Supported by The Meriles Group @ CCNY</span>
       <h3>Can Cosmic Rays Degrade a Quantum Sensor?<span class="status-tag">Proposal</span></h3>
-      <p>A proposal to study GeV hadron irradiation of NV-center diamond quantum sensors at the CERN T9 beamline, with post-irradiation characterization support from Prof. Carlos Meriles (CUNY City College). Work led to an invitation from Prof. Carlos Meriles for a funded summer lab internship on radiation trajectory visualization in diamond.</p>
+      <p>Organized and led a 5-student team; authored and submitted a proposal to study radiation-induced spin-coherence degradation in NV-center CVD diamond via GeV hadron irradiation on CERN's T9 beamline. Secured a letter of support and pre/post-irradiation characterization commitment from Prof. Carlos Meriles (CUNY City College); the Meriles Group has since expressed interest in a possible future summer research opportunity.</p>
     </div>
 
     <div class="interests-list">
       <h3>Research Interests</h3>
       <p>Quantum error mitigation/correction, quantum sensing, topological quantum computing</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <span class="eyebrow">Hands-On Work</span>
+    <h2 class="section-title">Projects</h2>
+
+    <div class="research-entry">
+      <span class="research-meta">June 2025</span>
+      <h3>Scintillation-Based Cosmic-Ray Muon Detector</h3>
+      <p>Fabricated a high-energy particle detection system using a BC-408 scintillator and silicon photomultiplier readout, with a custom-designed, surface-mount soldered signal-processing and peak-detection PCB.</p>
+    </div>
+
+    <div class="research-entry">
+      <span class="research-meta">2023 – Present</span>
+      <h3>RF Security &amp; Wireless Protocol Analysis</h3>
+      <p>Designed and built a RollJam device to study automotive rolling-code cryptography vulnerabilities and wireless security weaknesses. Conducted protocol analysis using software-defined radio (SDR) platforms and WiFi analysis tools across WiFi, NFC, RF, and RFID communication protocols.</p>
     </div>
   </section>
 
@@ -649,7 +667,7 @@
       </div>
       <div class="edu-date">Class of 2026</div>
       <div class="edu-details">
-        Conducted independent research in quantum error mitigation with mentorship from IBM Research. Coursework included calculus III, calculus-based mechanics and electromagnetism, chemistry, computer science, and statistical analysis.
+        Conducted independent research in quantum error mitigation, mentored by Dr. Malcolm Carroll at the IBM T.J. Watson Research Center. Coursework included calculus III, calculus-based mechanics and electromagnetism, chemistry, computer science, and statistical analysis.
       </div>
     </div>
 
@@ -678,38 +696,37 @@
     <div class="honors">
       <h3>Selected Honors &amp; Programs</h3>
       <ul>
-        <li>3rd Place, Computer Science — Westchester Engineering Science Fair (WESEF)</li>
+        <li>3rd Place, Computer Science — Regeneron Westchester Science &amp; Engineering Fair (WESEF)</li>
         <li>1st Place, Somers Science Fair — Research Proposal</li>
         <li>U.S. State Department NSLI-Y Scholarship Finalist (Korean)</li>
         <li>Qiskit Global Summer School 2026 — Advanced Track</li>
       </ul>
     </div>
 
-<div class="coursework">
-  <h3>Technical Skills</h3>
+    <div class="coursework">
+      <h3>Technical Skills</h3>
 
-  <div class="skill-group">
-    <strong>Programming:</strong>
-    <span>Python (NumPy, SciPy, Pandas, Matplotlib)</span>
-  </div>
+      <div class="skill-group">
+        <strong>Programming:</strong>
+        <span>Python (NumPy, SciPy, Pandas, Matplotlib)</span>
+      </div>
 
-  <div class="skill-group">
-    <strong>Quantum Computing:</strong>
-    <span>Qiskit, quantum algorithms, VQE, error mitigation</span>
-  </div>
+      <div class="skill-group">
+        <strong>Quantum Computing:</strong>
+        <span>Qiskit, quantum algorithms, VQE, error mitigation</span>
+      </div>
 
-  <div class="skill-group">
-    <strong>Research and Data:</strong>
-    <span>Statistical analysis, experimental design, uncertainty analysis, data visualization, scientific writing</span>
-  </div>
+      <div class="skill-group">
+        <strong>Research and Data:</strong>
+        <span>Statistical analysis, experimental design, uncertainty analysis, data visualization, scientific writing</span>
+      </div>
 
-  <div class="skill-group">
-    <strong>Tools and Engineering:</strong>
-    <span>Git, GitHub, Linux, Bash, LaTeX, Jupyter Notebook, Fusion 360, AutoCAD, soldering</span>
-  </div>
-</div>
-
-
+      <div class="skill-group">
+        <strong>Tools and Engineering:</strong>
+        <span>Git, GitHub, Linux, Bash, LaTeX, Jupyter Notebook, Fusion 360, SMD soldering, SDR</span>
+      </div>
+    </div>
+  </section>
 
   <section id="experience">
     <span class="eyebrow">Experience &amp; Service</span>
@@ -925,13 +942,5 @@
 <footer>
   © 2026 Sam Stryker
 </footer>
-
-
-
-
-
-
-
-
 
 </body></html>
