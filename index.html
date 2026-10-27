@@ -3,6 +3,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sam Stryker</title>
+<meta name="description" content="Sam Stryker: Physics and Molecular Engineering (Quantum Engineering Track) student at the University of Chicago, undergraduate researcher in the Mazziotti group, volunteer firefighter and EMT.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;family=Inter:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
@@ -63,11 +65,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
   }
   .nav-name {
     font-family: 'Source Serif 4', serif;
     font-weight: 600;
     font-size: 1.05rem;
+    white-space: nowrap;
   }
   .nav-links {
     display: flex;
@@ -76,6 +80,7 @@
   }
   .nav-links a {
     color: var(--ink-soft);
+    white-space: nowrap;
   }
   .nav-links a:hover { color: var(--maroon); text-decoration: none; }
 
@@ -88,6 +93,7 @@
   section {
     padding: 72px 0;
     border-bottom: 1px solid var(--rule);
+    scroll-margin-top: 56px;
   }
   section:last-of-type { border-bottom: none; }
 
@@ -109,7 +115,7 @@
     align-items: center;
     gap: 40px;
   }
-  .photo-placeholder {
+  .photo {
     flex-shrink: 0;
     width: 128px;
     height: 128px;
@@ -117,9 +123,6 @@
     object-fit: cover;
     background: var(--surface);
     border: 1px solid var(--rule);
-    font-family: 'Source Serif 4', serif;
-    font-size: 2rem;
-    color: var(--ink-soft);
   }
   .intro-text h1 {
     font-size: 2.1rem;
@@ -132,7 +135,7 @@
   }
   .intro-text p {
     color: var(--ink-soft);
-    max-width: 52ch;
+    max-width: 56ch;
     margin: 0;
   }
 
@@ -179,6 +182,15 @@
     margin-left: 8px;
     vertical-align: middle;
   }
+  .status-tag.current {
+    color: #2d6a4f;
+    border-color: rgba(45,106,79,0.35);
+    background: rgba(45,106,79,0.06);
+  }
+  .inline-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+  }
 
   .interests-list {
     margin-top: 28px;
@@ -219,6 +231,18 @@
     color: var(--ink-soft);
     white-space: nowrap;
   }
+  .edu-details {
+    grid-column: 1 / -1;
+    margin: 8px 0 0 0;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+  .edu-details ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .edu-details li { margin-bottom: 4px; }
+
   .honors {
     margin-top: 28px;
     padding-top: 20px;
@@ -238,19 +262,6 @@
   }
   .honors li { margin-bottom: 4px; }
 
-  /* Education details */
-  .edu-details {
-    grid-column: 1 / -1;
-    margin: 8px 0 0 0;
-    color: var(--ink-soft);
-    font-size: 0.92rem;
-  }
-  .edu-details ul {
-    margin: 8px 0 0 0;
-    padding-left: 18px;
-  }
-  .edu-details li { margin-bottom: 4px; }
-
   .coursework {
     margin-top: 26px;
     padding-top: 20px;
@@ -263,7 +274,15 @@
     color: var(--ink-soft);
     margin-bottom: 10px;
   }
-  .coursework p { margin: 0; color: var(--ink-soft); }
+  .skill-group {
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-group strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
 
   /* Experience */
   .exp-entry {
@@ -363,8 +382,6 @@
     background: rgba(45,106,79,0.06);
   }
 
-
-  /* Certification groups and credential media */
   .cert-card.quantum-card {
     padding: 0;
     overflow: hidden;
@@ -424,6 +441,7 @@
   }
   .emt-note {
     margin-top: auto;
+    padding-top: 16px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.76rem;
     color: var(--ink-soft);
@@ -434,10 +452,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
     background: var(--surface);
     border: 1px solid var(--rule);
     border-radius: 8px;
     padding: 24px 28px;
+  }
+  .resume-box h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
   }
   .resume-box p {
     margin: 4px 0 0 0;
@@ -457,25 +481,20 @@
     background: var(--maroon-soft);
     text-decoration: none;
   }
-
   .resume-actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--maroon);
-  border: 1px solid var(--maroon);
-}
-
-.btn-secondary:hover {
-  background: rgba(124, 31, 42, 0.07);
-  color: var(--maroon);
-}
-
-  
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--maroon);
+    border: 1px solid var(--maroon);
+  }
+  .btn-secondary:hover {
+    background: rgba(124, 31, 42, 0.07);
+    color: var(--maroon);
+  }
 
   /* Contact */
   #contact .contact-list {
@@ -488,7 +507,9 @@
     gap: 14px;
     align-items: baseline;
     font-size: 0.98rem;
+    min-width: 0;
   }
+  .contact-row a { overflow-wrap: anywhere; }
   .contact-row .label {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.78rem;
@@ -506,71 +527,25 @@
     color: var(--ink-soft);
   }
 
+  @media (max-width: 700px) {
+    .nav-inner { flex-direction: column; align-items: flex-start; gap: 6px; padding: 12px 16px; }
+    .nav-links { gap: 14px; font-size: 0.8rem; overflow-x: auto; max-width: 100%; padding-bottom: 2px; }
+    section { scroll-margin-top: 84px; }
+  }
+
   @media (max-width: 600px) {
+    main { padding: 0 16px; }
     #intro { flex-direction: column; align-items: flex-start; gap: 20px; padding-top: 48px; }
     section { padding: 48px 0; }
-    .edu-entry { grid-template-columns: 1fr; }
-    .resume-box { flex-direction: column; align-items: flex-start; gap: 14px; }
-    .nav-links { gap: 12px; font-size: 0.78rem; overflow-x: auto; }
+    .edu-entry { grid-template-columns: 1fr; gap: 2px; }
+    #resume .resume-box { flex-direction: column; align-items: flex-start; gap: 14px; padding: 20px; }
     .cert-grid { grid-template-columns: 1fr; }
     .quantum-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .contact-row .label { width: 72px; }
   }
-
-  /* Edit mode */
-  .editor-bar {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    gap: 10px;
-    z-index: 1000;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.8rem;
-  }
-  .editor-btn {
-    background: var(--ink);
-    color: #fff;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-  }
-  .editor-btn:hover { background: var(--maroon); }
-  .editor-btn.active { background: var(--maroon); }
-  .editor-btn.export { background: #2d6a4f; }
-  .editor-btn.export:hover { background: #235c42; }
-
-  body.edit-mode [data-editable] {
-    outline: 1px dashed transparent;
-    border-radius: 3px;
-    transition: outline-color 0.15s, background 0.15s;
-    cursor: text;
-  }
-  body.edit-mode [data-editable]:hover {
-    outline-color: var(--maroon-soft);
-    background: rgba(124,31,42,0.05);
-  }
-  body.edit-mode [data-editable]:focus {
-    outline: 1px solid var(--maroon);
-    background: rgba(124,31,42,0.08);
-  }
-
-  .editor-hint {
-    display: none;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 10px 24px;
-    text-align: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-    color: #fff;
-    background: var(--maroon);
-  }
-  body.edit-mode .editor-hint { display: block; }
 </style>
 </head>
-<body class="edit-mode">
+<body>
 
 <nav>
   <div class="nav-inner">
@@ -590,41 +565,48 @@
 <main>
 
   <section id="intro">
-    <img class="photo-placeholder" src="assets/photoSquare.png" alt="Sam Stryker">
+    <img class="photo" src="assets/avatar.jpg" alt="Sam Stryker" width="128" height="128">
     <div class="intro-text">
       <h1>Sam Stryker</h1>
-      <div class="role">Incoming student in Physics and Molecular Engineering (Quantum Engineering Track) — University of Chicago, Class of 2030</div>
-      <p>Student researcher focused on quantum error mitigation, quantum sensing, and the reliability of emerging quantum technologies. Volunteer firefighter and EMT serving communities in Westchester County, New York.</p>
+      <div class="role">Physics and Molecular Engineering (Quantum Engineering Track) · University of Chicago, Class of 2030</div>
+      <p>Undergraduate researcher in Prof. David Mazziotti’s quantum chemistry group at UChicago, with prior independent research in quantum error mitigation on IBM quantum hardware. Volunteer firefighter and EMT crew chief in Westchester County, New York, and a licensed EMT in Illinois.</p>
     </div>
   </section>
 
   <section id="research">
     <span class="eyebrow">Research &amp; Interests</span>
-    <h2 class="section-title">Selected Research</h2>
+    <h2 class="section-title">Research</h2>
+
+    <div class="research-entry">
+      <span class="research-meta">Undergraduate Researcher · Department of Chemistry, University of Chicago · Autumn 2026 – Present</span>
+      <h3>Mazziotti Group<span class="status-tag current">Current</span></h3>
+      <p>Joined Prof. David Mazziotti’s group, which develops reduced-density-matrix methods that capture strong electron correlation in molecules and materials at a cost that grows polynomially rather than exponentially with system size, including the anti-Hermitian contracted Schrödinger equation (ACSE) on classical and quantum computers.</p>
+    </div>
 
     <div class="research-entry">
       <span class="research-meta">Independent Research · ibm_kyiv</span>
       <h3>Phase I: Bayesian-Augmented Zero-Noise Extrapolation (BZNE)</h3>
-      <p>A Bayesian correction framework using classically simulated, calibration-informed priors to regularize noisy hardware measurements before zero-noise extrapolation, developed with mentorship from research scientist Dr. Malcolm Carroll at the IBM T.J. Watson Research Center. On a 3-qubit test circuit on ibm_kyiv, reduced mean absolute error by <span class="stat">87%</span> relative to standard ZNE (0.040 vs. 0.306) and improved extrapolation fit from R² = 0.962 to 0.9999.</p>
-      <p>Placed <span class="stat">3rd, Computer Science</span> at the Regeneron Westchester Science &amp; Engineering Fair (760+ competitors); submitted to Regeneron STS. Code available on GitHub.</p>
+      <p>A Bayesian correction framework using classically simulated, calibration-informed priors to regularize noisy hardware measurements before zero-noise extrapolation, developed with mentorship from research scientist Dr. Malcolm Carroll at the IBM T.J. Watson Research Center. On a 3-qubit test circuit on ibm_kyiv, reduced mean absolute error by <span class="stat">87%</span> relative to standard ZNE (0.040 vs. 0.306), improved extrapolation fit from R² = 0.962 to 0.9999, and reduced measurement variability by 91–95%.</p>
+      <p>Placed <span class="stat">3rd, Computer Science</span> at the Regeneron Westchester Science &amp; Engineering Fair (WESEF, 760+ competitors) and <span class="stat">1st, Computer Science</span> at the Somers Science Research Fair (700+ competitors).</p>
+      <p>Code: <a class="inline-link" href="https://github.com/samstryker/Bayesian-ZNE-Phase1" target="_blank" rel="noopener">github.com/samstryker/Bayesian-ZNE-Phase1</a></p>
     </div>
 
     <div class="research-entry">
       <span class="research-meta">Independent Research · ibm_torino</span>
       <h3>Phase II: Shadow-Informed Priors for Bayesian ZNE</h3>
-      <p>Extended the framework with priors derived from quantum shadow tomography rather than classical simulation, removing Phase I's classical-simulation ceiling. Benchmarked on H₂ and LiH VQE circuits on IBM's 133-qubit ibm_torino backend using Hamiltonian Monte Carlo posterior inference.</p>
-      <p>Shadow-derived priors did not outperform standard ZNE in raw accuracy under weak noise-scaling, but the framework delivered full Bayesian uncertainty quantification, hardware-specific noise characterization, and quantitative diagnostics of prior–likelihood mismatch.</p>
+      <p>Extended the framework with priors derived from quantum shadow tomography rather than classical simulation, removing Phase I’s classical-simulation ceiling. Benchmarked on H₂ and LiH VQE circuits on IBM’s 133-qubit ibm_torino backend using Hamiltonian Monte Carlo posterior inference.</p>
+      <p>Shadow-derived priors did not outperform standard ZNE in raw accuracy under weak noise-scaling, but the framework delivered full Bayesian uncertainty quantification, hardware-specific noise characterization, and quantitative diagnostics of prior–likelihood mismatch. Submitted to the Regeneron Science Talent Search; technical paper available on request.</p>
     </div>
 
     <div class="research-entry">
-      <span class="research-meta">CERN Beamline for Schools · Supported by The Meriles Group @ CCNY</span>
+      <span class="research-meta">CERN Beamline for Schools · Project Lead · 2026 · Supported by The Meriles Group @ CCNY</span>
       <h3>Can Cosmic Rays Degrade a Quantum Sensor?<span class="status-tag">Proposal</span></h3>
-      <p>Organized and led a 5-student team; authored and submitted a proposal to study radiation-induced spin-coherence degradation in NV-center CVD diamond via GeV hadron irradiation on CERN's T9 beamline. Secured a letter of support and pre/post-irradiation characterization commitment from Prof. Carlos Meriles (CUNY City College); the Meriles Group has since expressed interest in a possible future summer research opportunity.</p>
+      <p>Organized and led a 5-student team; authored and submitted a proposal to study radiation-induced spin-coherence degradation in NV-center CVD diamond via GeV hadron irradiation on CERN’s T9 beamline. Secured a letter of support and a pre/post-irradiation characterization commitment from Prof. Carlos Meriles (CUNY City College); the Meriles Group has since expressed interest in a possible future summer research opportunity.</p>
     </div>
 
     <div class="interests-list">
       <h3>Research Interests</h3>
-      <p>Quantum error mitigation/correction, quantum sensing, topological quantum computing</p>
+      <p>Quantum chemistry and electronic structure, quantum error mitigation and correction, quantum sensing, topological quantum computing</p>
     </div>
   </section>
 
@@ -641,7 +623,7 @@
     <div class="research-entry">
       <span class="research-meta">2023 – Present</span>
       <h3>RF Security &amp; Wireless Protocol Analysis</h3>
-      <p>Designed and built a RollJam device to study automotive rolling-code cryptography vulnerabilities and wireless security weaknesses. Conducted protocol analysis using software-defined radio (SDR) platforms and WiFi analysis tools across WiFi, NFC, RF, and RFID communication protocols.</p>
+      <p>Built an SDR-based testbed to study rolling-code replay and jamming vulnerabilities in a controlled environment. Conducted protocol analysis using software-defined radio (SDR) platforms and WiFi analysis tools across WiFi, NFC, RF, and RFID communication protocols.</p>
     </div>
   </section>
 
@@ -652,22 +634,14 @@
     <div class="edu-entry">
       <div>
         <h3>University of Chicago</h3>
-        <div class="edu-sub">Incoming undergraduate · BS Physics and Molecular Engineering (Quantum Engineering Track)</div>
+        <div class="edu-sub">BS Physics and BS Molecular Engineering (double major), Quantum Engineering Track</div>
       </div>
-      <div class="edu-date">Class of 2030</div>
+      <div class="edu-date">2026 – 2030</div>
       <div class="edu-details">
-        Planned academic focus in quantum information science, condensed-matter physics, and the engineering of quantum devices. Interested in combining rigorous physics training with experimental and computational work on fault-tolerant quantum systems.
-      </div>
-    </div>
-
-    <div class="edu-entry">
-      <div>
-        <h3>Horace Greeley High School</h3>
-        <div class="edu-sub">Chappaqua, New York · Three-Year Science Research Program</div>
-      </div>
-      <div class="edu-date">Class of 2026</div>
-      <div class="edu-details">
-        Conducted independent research in quantum error mitigation, mentored by Dr. Malcolm Carroll at the IBM T.J. Watson Research Center. Coursework included calculus III, calculus-based mechanics and electromagnetism, chemistry, computer science, and statistical analysis.
+        <ul>
+          <li>Undergraduate researcher, Mazziotti Group (Department of Chemistry)</li>
+          <li>Engineering Fellow, UChicago Career Advancement Engineering Fellows Program (2026–27)</li>
+        </ul>
       </div>
     </div>
 
@@ -678,28 +652,52 @@
       </div>
       <div class="edu-date">Summer 2026</div>
       <div class="edu-details">
-        Completed coursework in statistical computing with Python and Korean language in an international academic setting. Selected to deliver the program’s graduation address. Participated as the youngest student in the program.
+        Completed coursework in statistics with Python and Korean language in an international academic setting. Selected to deliver the program’s student graduation address; the youngest student in the program.
       </div>
     </div>
 
     <div class="edu-entry">
       <div>
         <h3>University of Chicago Summer Session</h3>
-        <div class="edu-sub">Pathways in Molecular Engineering</div>
+        <div class="edu-sub">Pathways in Molecular Engineering (MENG 10100)</div>
       </div>
       <div class="edu-date">Summer 2025</div>
       <div class="edu-details">
-        Completed an intensive introduction to molecular engineering spanning targeted materials design, energy, density functional theory, and quantum engineering, including laboratory work and HPC molecule simulation.
+        Credit-bearing accelerated course condensing nine weeks of undergraduate content into three: engineering design, molecular modeling, density functional theory, nanomaterials, and wet-lab and HPC components. Grade: 100/100.
+      </div>
+    </div>
+
+    <div class="edu-entry">
+      <div>
+        <h3>Columbia University Pre-College Program</h3>
+        <div class="edu-sub">Introduction to Quantum Mechanics · New York, NY</div>
+      </div>
+      <div class="edu-date">Summer 2024</div>
+      <div class="edu-details">
+        Four-week intensive course covering the historical development of quantum mechanics, the Bohr model, wave–particle duality, the Schrödinger equation, the uncertainty principle, and applications such as quantum dots and quantum computing.
+      </div>
+    </div>
+
+    <div class="edu-entry">
+      <div>
+        <h3>Horace Greeley High School</h3>
+        <div class="edu-sub">Chappaqua, New York · Three-Year Science Research Program · GPA 4.0/4.0, Summa Cum Laude</div>
+      </div>
+      <div class="edu-date">2022 – 2026</div>
+      <div class="edu-details">
+        Conducted independent research in quantum error mitigation, mentored by Dr. Malcolm Carroll at the IBM T.J. Watson Research Center. Coursework included AP Physics C (Mechanics and E&amp;M), AP Chemistry, AP Calculus BC, Calculus III and Linear Algebra, and advanced Java data structures and algorithms.
       </div>
     </div>
 
     <div class="honors">
-      <h3>Selected Honors &amp; Programs</h3>
+      <h3>Selected Honors</h3>
       <ul>
+        <li>Engineering Fellow, UChicago Career Advancement (2026–27)</li>
+        <li>NSLI-Y Scholarship Recipient (Korean), U.S. Department of State: one of 83 national finalists, selected from 4,000+ applicants, to receive the full scholarship</li>
         <li>3rd Place, Computer Science — Regeneron Westchester Science &amp; Engineering Fair (WESEF)</li>
-        <li>1st Place, Somers Science Fair — Research Proposal</li>
-        <li>U.S. State Department NSLI-Y Scholarship Finalist (Korean)</li>
-        <li>Qiskit Global Summer School 2026 — Advanced Track</li>
+        <li>1st Place, Computer Science — Somers Science Research Fair</li>
+        <li>New York State Attorney General’s Triple “C” Award (Character, Courage, Commitment)</li>
+        <li>Summa Cum Laude, Horace Greeley High School; AP Scholar with Distinction (×2)</li>
       </ul>
     </div>
 
@@ -707,13 +705,13 @@
       <h3>Technical Skills</h3>
 
       <div class="skill-group">
-        <strong>Programming:</strong>
-        <span>Python (NumPy, SciPy, Pandas, Matplotlib)</span>
+        <strong>Quantum Computing:</strong>
+        <span>Qiskit, IBM Quantum, circuit design and transpilation, VQE, quantum error mitigation, zero-noise extrapolation, noise modeling, quantum chemistry simulation</span>
       </div>
 
       <div class="skill-group">
-        <strong>Quantum Computing:</strong>
-        <span>Qiskit, quantum algorithms, VQE, error mitigation</span>
+        <strong>Programming:</strong>
+        <span>Python (NumPy, SciPy, Pandas, Matplotlib), Java (data structures, algorithms, object-oriented programming)</span>
       </div>
 
       <div class="skill-group">
@@ -723,7 +721,7 @@
 
       <div class="skill-group">
         <strong>Tools and Engineering:</strong>
-        <span>Git, GitHub, Linux, Bash, LaTeX, Jupyter Notebook, Fusion 360, SMD soldering, SDR</span>
+        <span>Linux/Bash (Ubuntu/Debian), Git/GitHub, LaTeX, Jupyter, Fusion 360, Adobe Suite, SMD soldering, SDR</span>
       </div>
     </div>
   </section>
@@ -733,33 +731,41 @@
     <h2 class="section-title">Experience &amp; Service</h2>
 
     <div class="exp-entry">
-      <h3>Certified Volunteer Firefighter</h3>
-      <span class="exp-meta">Chappaqua Fire Department</span>
-      <p>Communicate clearly and make time-critical decisions with incomplete information while coordinating team-based operations during live fire and rescue emergencies, applying standardized incident-command and communication protocols; Train recruits in firefighting techniques and tactics preparing students of all ages for Firefighter I certification.</p>
-    </div>
-
-    <div class="exp-entry">
-      <h3>Emergency Medical Technician (EMT)</h3>
+      <h3>Emergency Medical Technician · Crew Chief</h3>
       <span class="exp-meta">Chappaqua EMS (since Jan 2026) · Pleasantville Emergency Services (since Dec 2025)</span>
-      <p>Lead patient care and direct an EMT aider while coordinating scene activities and communicating with dispatch, hospital staff, and other first-response personnel</p>
+      <p>Crew chief at Chappaqua EMS with full responsibility for patient care on calls: direct the crew and coordinate with dispatch, hospital staff, and other first-response personnel. Also serve as an administrator for the Chappaqua Volunteer Ambulance Corps. Certified EMT in New York, licensed EMT in Illinois, and AHA BLS Provider.</p>
     </div>
 
     <div class="exp-entry">
-      <h3>Team Captain, Science Olympiad</h3>
-      <span class="exp-meta">Astronomy &amp; Circuit Lab events</span>
-      <p>Led team preparation across Astronomy (spectroscopy, orbital mechanics, variable stars) and Circuit Lab (analog and digital circuit analysis).</p>
+      <h3>Volunteer Firefighter</h3>
+      <span class="exp-meta">Chappaqua Volunteer Fire Department · Jan 2024 – Present</span>
+      <p>Make time-critical decisions with incomplete information while coordinating team-based operations during live fire and rescue emergencies, applying standardized incident-command and communication protocols. Train recruits of all ages in firefighting techniques and tactics toward Firefighter I certification.</p>
     </div>
 
     <div class="exp-entry">
       <h3>Private Tutor</h3>
-      <span class="exp-meta">High School Students</span>
-      <p>Offer one-on-one tutoring in Math, Chemistry, and Physics, targeting specific student learning goals.</p>
+      <span class="exp-meta">High School Students · Sep 2025 – Present</span>
+      <p>Tutor high school students in chemistry, mathematics, and physics, tailoring instruction to individual course demands and learning goals.</p>
     </div>
 
+    <div class="exp-entry">
+      <h3>Mathematics Instructor</h3>
+      <span class="exp-meta">Mathnasium · Dec 2024 – Jan 2026</span>
+      <p>Taught K–12 students mathematics from elementary concepts through calculus, adapting instruction to different learning styles.</p>
+    </div>
 
+    <div class="exp-entry">
+      <h3>Team Captain, Science Olympiad</h3>
+      <span class="exp-meta">Horace Greeley High School · Astronomy &amp; Circuit Lab events</span>
+      <p>Led team preparation across Astronomy (spectroscopy, orbital mechanics, variable stars) and Circuit Lab (analog and digital circuit analysis).</p>
+    </div>
+
+    <div class="exp-entry">
+      <h3>Founding Member &amp; Design Lead, FIRST Robotics</h3>
+      <span class="exp-meta">Horace Greeley High School</span>
+      <p>Co-founded the school’s FIRST Robotics team; worked in the electrical division setting up the robot’s wireless control systems.</p>
+    </div>
   </section>
-
-
 
   <section id="certifications">
     <span class="eyebrow">Credentials &amp; Technical Learning</span>
@@ -774,6 +780,7 @@
             class="cert-badge"
             src="assets/certifications/basics-of-quantum-information.png"
             alt="IBM Basics of Quantum Information badge"
+            loading="lazy"
           >
           <div class="cert-card-content">
             <span class="cert-status completed">Completed</span>
@@ -794,6 +801,7 @@
             class="cert-badge"
             src="assets/certifications/fundamentals-of-quantum-algorithms.png"
             alt="IBM Fundamentals of Quantum Algorithms badge"
+            loading="lazy"
           >
           <div class="cert-card-content">
             <span class="cert-status completed">Completed</span>
@@ -813,13 +821,14 @@
           <img
             class="cert-badge"
             src="assets/certifications/QGSS2026.png"
-            alt="Qiskit Global Summer School 202"
+            alt="Qiskit Global Summer School 2026 Quantum Excellence badge"
+            loading="lazy"
           >
           <div class="cert-card-content">
             <span class="cert-status completed">Completed</span>
-            <h3>Qiskit Global Summer School 2026 - Advanced Track</h3>
-            <div class="cert-issuer">IBM Quantum Learning</div>
-            <p>Advanced-track program featuring technical lectures, graded labs, and applied work with Qiskit and current quantum-computing methods.</p>
+            <h3>Qiskit Global Summer School 2026 — Advanced Track</h3>
+            <div class="cert-issuer">IBM Quantum · Aug 2026</div>
+            <p>Quantum Excellence badge for the advanced track: technical lectures, graded labs, and applied work with Qiskit and current quantum-computing methods.</p>
             <a
               class="cert-link"
               href="assets/certifications/QGSS2026.png"
@@ -829,17 +838,15 @@
           </div>
         </article>
 
-
         <article class="cert-card quantum-card pending">
           <div class="cert-placeholder">In Progress</div>
           <div class="cert-card-content">
             <span class="cert-status">In Progress</span>
             <h3>Foundations of Quantum Error Correction</h3>
             <div class="cert-issuer">IBM Quantum Learning</div>
-            <p>Planned study of quantum noise, stabilizer methods, error-correcting codes, and fault-tolerant quantum computation.</p>
+            <p>Coursework on quantum noise, stabilizer methods, error-correcting codes, and fault-tolerant quantum computation.</p>
           </div>
         </article>
-
       </div>
     </div>
 
@@ -848,10 +855,10 @@
 
       <div class="cert-grid">
         <article class="cert-card">
-          <span class="cert-status completed">Certified</span>
+          <span class="cert-status completed">Certified · Licensed</span>
           <h3>Emergency Medical Technician</h3>
-          <div class="cert-issuer">New York State Department of Health</div>
-          <p>Certified to provide prehospital emergency assessment, stabilization, and basic life support care.</p>
+          <div class="cert-issuer">New York State Department of Health · Illinois Department of Public Health</div>
+          <p>Certified EMT in New York and licensed EMT in Illinois, providing prehospital emergency assessment, stabilization, and basic life support care. AHA BLS Provider.</p>
           <ul class="cert-components">
             <li>
               <strong>Certified Emergency Vehicle Operator</strong><br>
@@ -859,17 +866,14 @@
               <a class="component-link" href="certificates/CEVO.jpg" target="_blank" rel="noopener">View certificate →</a>
             </li>
           </ul>
-          
-          <div class="emt-note">Documentation available upon request.</div>
-
-          
+          <div class="emt-note">EMT documentation available upon request.</div>
         </article>
 
         <article class="cert-card">
           <span class="cert-status completed">Certified</span>
-          <h3>New York State Firefighter I Training</h3>
+          <h3>New York State Firefighter I</h3>
           <div class="cert-issuer">New York State Office of Fire Prevention and Control</div>
-          <p>Completed the exterior and interior firefighting curriculum that comprises New York State Firefighter I training, with additional firefighter-survival and self-rescue instruction.</p>
+          <p>Completed the exterior and interior firefighting curriculum that makes up New York State Firefighter I training, with additional firefighter-survival and self-rescue instruction.</p>
 
           <ul class="cert-components">
             <li>
@@ -877,17 +881,19 @@
               79 hours · April 2025
               <a class="component-link" href="certificates/BEFO.pdf" target="_blank" rel="noopener">View certificate →</a>
             </li>
-
             <li>
               <strong>SCBA / Interior Firefighting Operations–FF1</strong><br>
               50 hours · May 2025
               <a class="component-link" href="certificates/IFO.pdf" target="_blank" rel="noopener">View certificate →</a>
             </li>
-
             <li>
               <strong>Firefighter Survival / Self Rescue</strong><br>
               12 hours · January 2026
               <a class="component-link" href="certificates/Survival.pdf" target="_blank" rel="noopener">View certificate →</a>
+            </li>
+            <li>
+              <strong>FEMA ICS/NIMS Training</strong><br>
+              IS-100, IS-200, IS-700
             </li>
           </ul>
         </article>
@@ -899,33 +905,18 @@
     </p>
   </section>
 
-
   <section id="resume">
     <span class="eyebrow">Résumé</span>
     <h2 class="section-title">Résumé</h2>
     <div class="resume-box">
       <div>
-        <h3 style="font-family:'Inter',sans-serif; font-size:1rem; font-weight:600;">Download my résumé</h3>
-        <p>PDF, Last updated 8/7/2026</p>
+        <h3>Download my résumé</h3>
+        <p>PDF, last updated 8/7/2026</p>
       </div>
       <div class="resume-actions">
-  <a
-    class="btn btn-secondary"
-    href="resume.pdf"
-    target="_blank"
-    rel="noopener"
-  >
-    View Résumé
-  </a>
-
-  <a
-    class="btn"
-    href="resume.pdf"
-    download
-  >
-    Download PDF
-  </a>
-</div>
+        <a class="btn btn-secondary" href="resume.pdf" target="_blank" rel="noopener">View Résumé</a>
+        <a class="btn" href="resume.pdf" download>Download PDF</a>
+      </div>
     </div>
   </section>
 
@@ -935,15 +926,19 @@
     <div class="contact-list">
       <div class="contact-row">
         <span class="label mono">Email</span>
-        <a href="mailto:Samueltownshendstryker@gmail.com" data-_href="mailto:Samueltownshendstryker@gmail.com">samueltownshendstryker@gmail.com</a>
+        <a href="mailto:sstryker@uchicago.edu">sstryker@uchicago.edu</a>
       </div>
       <div class="contact-row">
         <span class="label mono">Email</span>
-        <a href="mailto:sstryker@uchicago.edu" data-_href="mailto:sstryker@uchicago.edu">sstryker@uchicago.edu</a>
+        <a href="mailto:samueltownshendstryker@gmail.com">samueltownshendstryker@gmail.com</a>
       </div>
       <div class="contact-row">
         <span class="label mono">LinkedIn</span>
-        <a href="https://linkedin.com/in/sam-stryker" target="_blank" rel="noopener" data-_href="https://linkedin.com/in/sam-stryker">linkedin.com/in/sam-stryker</a>
+        <a href="https://linkedin.com/in/sam-stryker" target="_blank" rel="noopener">linkedin.com/in/sam-stryker</a>
+      </div>
+      <div class="contact-row">
+        <span class="label mono">GitHub</span>
+        <a href="https://github.com/samstryker" target="_blank" rel="noopener">github.com/samstryker</a>
       </div>
     </div>
   </section>
